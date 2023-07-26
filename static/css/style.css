@@ -3,3 +3,8 @@
     width: 100%;
     object-fit: cover;
 }
+
+h4 {
+    color: rgb(120, 120, 120);
+    margin-bottom: 4px;
+}
