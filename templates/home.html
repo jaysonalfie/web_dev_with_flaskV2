@@ -10,11 +10,21 @@
     
   </head>
   <body>
+    {% include 'nav.html'%}
+    <img class="img-fluid" id ="banner" src = "http://127.0.0.1:5000/static/pic1.jpg"  >
     <div class="container">
      <h1 class="text-center mt-2 mb-4">EveMan Job Openings</h1>
-      <img class="img-fluid" id ="banner" src = "http://127.0.0.1:5000/static/pic1.jpg"  >
-      <h2 class="text-center mt-2 mb-4">About EveMan</h2>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    
+
+     <div class="row " style="margin-bottom:16px">
+      <div class="col-md-6 ">
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="d-none d-md-block col-6 order-last">
+          <img src="/static/peoplework.jpg" style="height: 320px; border-radius: 4px;">
+      </div>
+  </div>
+  
 
       <h2 class="text-center mt-2 mb-4">Job Openings</h2>
         <div >
@@ -26,11 +36,11 @@
       <div class="text-center">
         <button class="btn btn-primary btn-lg"> Contact Us</button>
 
-        <p class="mt-4">Copyright 2022, EveMan</p>
+        
       </div>
       
     </div>
-
+    {% include 'footer.html'%}
 
   </body>  
 </html>
