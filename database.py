@@ -42,4 +42,15 @@ def load_jobs_from_db():
 
     return jobs
 
-   
+
+def load_job_from_db(id):
+    with engine.connect() as connection:
+        result = connection.execute(
+            text("SELECT * FROM jobs WHERE id = :val"),
+            {'val': id}  # Pass the parameter as a dictionary
+        )
+        row = result.fetchone()  # Use fetchone() to get a single row
+        if row is None:
+            return None
+        else:
+            return row._asdict()  # Convert the Row object to a dictionary
