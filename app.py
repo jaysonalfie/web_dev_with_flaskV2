@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify,request #using template
-from database import engine, load_job_from_db
+from database import engine, load_job_from_db,add_application_to_db
 from sqlalchemy import text
 
 #creating a flask app
@@ -72,6 +72,9 @@ def show_job(id):
 def apply_to_job(id):
     data = request.form
     job = load_job_from_db(id)
+
+     #populating the app table in the db
+    add_application_to_db(id,data)
     # Store this in the database
     # Display an acknowledgement
     # May send an email

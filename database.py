@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text,Table, Column, Integer, String, MetaData, ForeignKey
 from decouple import config # Import config from decouple
-
+import random
 
 # Load database configuration from .env file
 DB_HOST = config('DB_HOST', default='127.0.0.1')
@@ -13,7 +13,7 @@ DATABASE_URL = config('DATABASE_URL')  # Load DATABASE_URL from .env
 
 engine = create_engine(DATABASE_URL)
 
-
+metadata_obj = MetaData()
 # with engine.connect() as connection:
 #     result = connection.execute(text("select * from jobs"))
 #     # print("type(result):",type(result))
@@ -54,3 +54,33 @@ def load_job_from_db(id):
             return None
         else:
             return row._asdict()  # Convert the Row object to a dictionary
+
+def add_application_to_db( id,data):
+    with engine.connect() as connection:
+        query = text(
+"INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url)"
+"VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_url)"
+        )
+
+        dataTobeInserted={
+            "job_id":id,
+            "full_name":data['full_name'],
+            "email":data['email'],
+            "linkedin_url":data['linkedin_url'],
+            "education":data['education'],
+            "work_experience":data['work_experience'],
+            "resume_url":data['resume_url']
+        }
+        # print(dataTobeInserted)
+
+        connection.execute(query,dataTobeInserted)
+        
+        connection.commit()
+
+    # Add a return statement to indicate success
+    return "Application added to the database successfully"
+
+
+
+        
+        
